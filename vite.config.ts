@@ -9,7 +9,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         javascriptEnabled: true,
-        additionalData: '@import "./src/assets/styles/index.scss";',
+        additionalData: '@import "./src/assets/styles/variable.scss";',
       },
     },
   },
