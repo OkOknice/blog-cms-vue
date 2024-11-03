@@ -8,7 +8,9 @@
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint src --fix",
-    "lint:style": "stylelint src/**/*.{css,scss,vue} --cache --fix"
+    "lint:style": "stylelint src/**/*.{css,scss,vue} --cache --fix",
+    "prepare": "husky install",
+    "commitlint": "commitlint --config commitlint.config.cjs -e -V"
   },
   "dependencies": {
     "vue": "^3.5.12",
@@ -16,6 +18,8 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.9",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "@eslint/js": "^9.14.0",
     "@stylistic/eslint-plugin-js": "^2.10.1",
     "@stylistic/eslint-plugin-jsx": "^2.10.1",
@@ -30,6 +34,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-vue": "^9.30.0",
     "globals": "^15.11.0",
+    "husky": "^8.0.0",
     "postcss": "^8.4.47",
     "postcss-html": "^1.7.0",
     "postcss-scss": "^4.0.9",
