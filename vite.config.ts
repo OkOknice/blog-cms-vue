@@ -27,10 +27,10 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         '/api': {
           target: env.VITE_URL,
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '/')
-        }
-      }
-    }
+          rewrite: (path) => path.replace(/^\/api/, '/'),
+        },
+      },
+    },
   }
 }
 

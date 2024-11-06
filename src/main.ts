@@ -10,8 +10,6 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 // 导入样式
 import './assets/styles/index.scss'
 
-
-
 import { setupStore } from './store'
 import { setupRouter } from './router'
 
