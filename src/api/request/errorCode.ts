@@ -5,15 +5,15 @@
  */
 
 import { ElMessage } from 'element-plus'
-
+import { EnumStatusCode } from './enumStatusCode'
+import { useRouter } from 'vue-router'
 export const getErrorCode = (code: number, error: any) => {
   let message = ''
   switch (code) {
-    case 401:
+    case EnumStatusCode.AUTH_CODE:
+      const router = useRouter()
+      router.push('/login')
       message = '未登录'
-      break
-    case 403:
-      message = '登录过期，请重新登录'
       break
     case 404:
       message = '网络请求不存在'

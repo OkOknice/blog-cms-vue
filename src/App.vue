@@ -1,9 +1,9 @@
 <template>
   <div>
-    <el-button type="primary">测试</el-button>
+    <router-view></router-view>
   </div>
 </template>
 
-<script setup></script>
+<script setup lang="ts"></script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

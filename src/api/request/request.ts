@@ -8,6 +8,7 @@ import axios from 'axios'
 import type { AxiosInstance } from 'axios'
 import type { HYRequestConfig } from './types'
 import { getErrorCode } from './errorCode'
+import { EnumStatusCode } from './enumStatusCode'
 
 // 拦截器: 蒙版Loading/token/修改配置
 
@@ -46,9 +47,16 @@ class Request {
     )
     this.instance.interceptors.response.use(
       (res) => {
-        if (res.status === 200) {
-          // console.log(res)
+        if ([200, 201].includes(res.status)) {
+          console.log(res)
           console.log('全局响应成功的拦截')
+          const { code, data } = res.data
+          if (code === EnumStatusCode.SUCCESS_CODE) {
+            return data
+          } else {
+            getErrorCode(code, res)
+            return Promise.reject(res)
+          }
           return res.data
         } else {
           getErrorCode(res.status, res)
