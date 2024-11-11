@@ -10,6 +10,21 @@ const routes: RouteRecordRaw[] = [
     name: 'Dashboard',
     component: () =>
       import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'),
+    children: [
+      {
+        path: '/dashboard',
+        redirect: '/dashboard/home'
+      },
+      {
+        path: 'home',
+        name: 'Home',
+        meta: {
+          title: '首页'
+        },
+        component: () =>
+          import(/* webpackChunkName: "home" */ '@/views/home/home.vue'),
+      }
+    ]
   },
   {
     path: '/login',

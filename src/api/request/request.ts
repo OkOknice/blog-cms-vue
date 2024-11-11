@@ -34,7 +34,7 @@ class Request {
       (config) => {
         if (config.headers) {
           if (localStorage.getItem('token')) {
-            config.headers['token'] = localStorage.getItem('token')
+            config.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`
           }
         }
         console.log('全局请求成功的拦截')

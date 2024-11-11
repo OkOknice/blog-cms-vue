@@ -9,6 +9,7 @@ import { EnumStatusCode } from './enumStatusCode'
 import { useRouter } from 'vue-router'
 export const getErrorCode = (code: number, error: any) => {
   let message = ''
+  console.log(error)
   switch (code) {
     case EnumStatusCode.AUTH_CODE:
       const router = useRouter()
@@ -22,7 +23,7 @@ export const getErrorCode = (code: number, error: any) => {
       message = '服务器出现问题'
       break
     default:
-      message = error.response?.data?.message
+      message = error.data?.message
       break
   }
   ElMessage({

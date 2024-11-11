@@ -59,12 +59,15 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { Avatar, Hide } from '@element-plus/icons-vue'
 
+import userStore from '@/store/modules/user'
+
 import { loginApi } from '@/api'
 
 import type { FormInstance, FormRules } from 'element-plus'
 import type { ILoginParams } from '@/api/types/login-types'
 
 const router = useRouter()
+const user = userStore()
 
 const formRef = ref<FormInstance>()
 const captchaImg = ref(
@@ -108,11 +111,15 @@ const handleLogin = async () => {
   try {
     await formRef.value?.validate()
     const res = await loginApi(loginFormInfo.value)
-    console.log(res)
-    localStorage.setItem('token', res.token)
-    router.replace('/')
+
+    user.setToken(res.token)
+    user.setUserInfo().then(() => {
+      console.log('登录成功')
+      router.replace('/')
+    })
   } catch (error) {
     console.log(error)
+    getCaptcha()
   }
 
   // console.log(validate)
