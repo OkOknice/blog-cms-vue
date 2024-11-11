@@ -3,14 +3,12 @@ import { getUserInfoApi } from '@/api'
 
 import { IUserState } from './types/userStoreType'
 
-
-
 const userStore = defineStore('user', {
   state: (): IUserState => ({
     token: localStorage.getItem('token') || '',
     userInfo: null,
     menuList: [],
-    roleList: []
+    roleList: [],
   }),
   actions: {
     setToken(token: string) {
@@ -28,8 +26,8 @@ const userStore = defineStore('user', {
       this.menuList = []
       this.roleList = []
       localStorage.clear()
-    }
-  }
+    },
+  },
 })
 
 export default userStore
